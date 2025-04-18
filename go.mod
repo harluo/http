@@ -4,7 +4,7 @@ go 1.24
 
 require (
 	github.com/goexl/http v0.2.1
-	github.com/harluo/boot v1.6.5
+	github.com/harluo/boot v1.6.7
 	github.com/harluo/di v0.0.3
 )
 
