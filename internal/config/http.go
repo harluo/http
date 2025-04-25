@@ -1,16 +1,16 @@
 package config
 
 import (
-	"github.com/harluo/boot"
+	"github.com/harluo/config"
 )
 
 type Http struct {
-	Client *Client `json:"client,omitempty" validate:"required"`
+	Client *Client `default:"{}" json:"client,omitempty" validate:"required"`
 }
 
-func newHttp(config *boot.Config) (http *Http, err error) {
+func newHttp(config *config.Getter) (http *Http, err error) {
 	http = new(Http)
-	err = config.Build().Get(&struct {
+	err = config.Get(&struct {
 		Http *Http `json:"http,omitempty" validate:"required"`
 	}{
 		Http: http,
