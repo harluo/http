@@ -11,7 +11,7 @@ type Http struct {
 func newHttp(config config.Getter) (http *Http, err error) {
 	http = new(Http)
 	err = config.Get(&struct {
-		Http *Http `json:"http,omitempty" validate:"required"`
+		Http *Http `default:"{}" json:"http,omitempty" validate:"required"`
 	}{
 		Http: http,
 	})
