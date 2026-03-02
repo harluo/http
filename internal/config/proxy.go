@@ -4,7 +4,7 @@ type Proxy struct {
 	// 是否开启
 	Enabled *bool `default:"true" json:"enabled,omitempty"`
 	// 主机
-	Host string `json:"host,omitempty" validate:"required,hostname,ip"`
+	Host string `json:"host,omitempty" validate:"required,hostname|ip"`
 	// 端口
 	Port int `json:"port,omitempty" validate:"omitempty,min=1,max=65535"`
 	// 代理类型
