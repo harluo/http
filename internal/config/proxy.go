@@ -7,8 +7,7 @@ type Proxy struct {
 	Host string `json:"host,omitempty" validate:"required,hostname|ip"`
 	// 端口
 	Port int `json:"port,omitempty" validate:"omitempty,min=1,max=65535"`
-	// 代理类型
-	// nolint: lll
+	// 类型
 	Scheme string `default:"http" json:"scheme,omitempty" validate:"required,oneof=socks4 socks5 http https"`
 	// 目标
 	Target string `json:"target,omitempty"`
