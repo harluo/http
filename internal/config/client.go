@@ -2,12 +2,13 @@ package config
 
 import (
 	"net/http"
-	"time"
 )
 
 type Client struct {
 	// 超时
-	Timeout time.Duration `json:"timeout,omitempty"`
+	Timeout *Timeout `json:"timeout,omitempty"`
+	// 连接池
+	Pool *Pool `json:"pool,omitempty"`
 	// 代理
 	Proxy *Proxy `json:"proxy,omitempty"`
 	// 代理列表

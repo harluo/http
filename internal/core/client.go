@@ -8,7 +8,7 @@ import (
 type Client = http.Client
 
 func newClient(config *config.Client) *http.Client {
-	builder := http.New().Payload(*config.Payload).Timeout(config.Timeout).
+	builder := http.New().Payload(*config.Payload).
 		Headers(config.Headers).
 		Forms(config.Forms).
 		Queries(config.Queries).
@@ -27,6 +27,18 @@ func newClient(config *config.Client) *http.Client {
 			Scheme(server.Scheme).
 			Basic(server.Username, server.Password).
 			Build()
+	}
+
+	if config.Timeout != nil {
+		conf := config.Timeout
+		timeout := builder.Timeout()
+		_ = timeout.Connection(conf.Connection).Handshake(conf.Handshake)
+	}
+
+	if config.Pool != nil {
+		conf := config.Pool
+		pool := builder.Pool()
+		_ = pool.All(conf.All).Host(conf.Host)
 	}
 
 	if nil != config.Auth && config.Auth.Enable() {
