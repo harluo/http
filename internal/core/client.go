@@ -32,7 +32,7 @@ func newClient(config *config.Client) *http.Client {
 	if config.Timeout != nil {
 		conf := config.Timeout
 		timeout := builder.Timeout()
-		_ = timeout.Connection(conf.Connection).Handshake(conf.Handshake)
+		_ = timeout.Connection(conf.Connection).Handshake(conf.Handshake).Idle(conf.Idle)
 	}
 
 	if config.Pool != nil {
